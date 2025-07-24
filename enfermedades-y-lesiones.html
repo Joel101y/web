@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enfermedades y lesiones musculares | MuscleQuest</title>
+    <meta name="description" content="Información sobre enfermedades y lesiones comunes que afectan a los músculos.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+</head>
+<body>
+    <!-- Header con botón hamburguesa -->
+    <header>
+        <h1>MuscleQuest</h1>
+        <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav id="main-nav">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="que-son-los-musculos.html">¿Qué son los músculos?</a></li>
+            <li><a href="tipos-de-musculos.html">Tipos de músculos</a></li>
+            <li><a href="funciones-de-los-musculos.html">Funciones de los músculos</a></li>
+            <li><a href="anatomia-muscular.html">Anatomía muscular</a></li>
+            <li><a href="enfermedades-y-lesiones.html">Enfermedades y lesiones</a></li>
+            <li><a href="nutricion-y-musculos.html">Nutrición y músculos</a></li>
+            <li><a href="ejercicios-y-entrenamiento-muscular.html">Ejercicios y entrenamiento muscular</a></li>
+            <li><a href="todos-los-musculos.html">Todos los músculos</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+        <h2>Enfermedades y lesiones musculares</h2>
+
+        <!-- Lesiones comunes -->
+        <section class="contenido-flex">
+            <div class="texto-contenido">
+                <h3>Lesiones comunes</h3>
+                <div class="tarjetas-lesiones">
+                    <div class="tarjeta">
+                        <h4>Distensiones o desgarros musculares</h4>
+                        <p>Ruptura parcial o total de fibras musculares por sobreesfuerzo.</p>
+                    </div>
+                    <div class="tarjeta">
+                        <h4>Calambres</h4>
+                        <p>Contracciones involuntarias dolorosas, a menudo por deshidratación o fatiga.</p>
+                    </div>
+                </div>
+            </div>
+            <img src="img/lesiones-comunes.jpg" alt="Lesiones musculares comunes" class="imagen-derecha">
+        </section>
+
+        <!-- Enfermedades genéticas -->
+        <section class="contenido-flex reverse">
+            <div class="texto-contenido">
+                <h3>Enfermedades genéticas</h3>
+                <div class="enfermedad-info">
+                    <h4>Distrofias musculares</h4>
+                    <p>Enfermedades genéticas que causan debilitamiento progresivo de los músculos 
+                    (ej. Distrofia muscular de Duchenne).</p>
+                    <ul class="lista-sintomas">
+                        <li>Debilidad progresiva</li>
+                        <li>Pérdida de masa muscular</li>
+                        <li>Dificultad en movimientos</li>
+                    </ul>
+                </div>
+            </div>
+            <img src="img/distrofias.jpg" alt="Distrofias musculares" class="imagen-derecha">
+        </section>
+
+        <!-- Tabla de condiciones -->
+        <section>
+            <h3>Otras condiciones musculares</h3>
+            <div class="tabla-contenedor">
+                <table class="tabla-enfermedades">
+                    <thead>
+                        <tr>
+                            <th>Condición</th>
+                            <th>Descripción</th>
+                            <th>Tratamiento común</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Miopatías inflamatorias</td>
+                            <td>Enfermedades autoinmunes donde el cuerpo ataca los músculos</td>
+                            <td>Medicamentos antiinflamatorios, terapia</td>
+                        </tr>
+                        <tr>
+                            <td>Tendinitis</td>
+                            <td>Inflamación de los tendones por uso excesivo</td>
+                            <td>Reposo, hielo, antiinflamatorios</td>
+                        </tr>
+                        <tr>
+                            <td>Rabdomiólisis</td>
+                            <td>Daño muscular grave que libera mioglobina en la sangre</td>
+                            <td>Hidratación intravenosa, monitoreo renal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Acordeón de lesiones específicas -->
+        <section class="seccion-acordeon">
+            <h3>Lesiones específicas</h3>
+            <div class="acordeon">
+                <div class="acordeon-item">
+                    <button class="acordeon-boton">Ruptura del tendón de Aquiles</button>
+                    <div class="acordeon-contenido">
+                        <div class="contenido-flex">
+                            <p>Es la ruptura parcial o total del tendón que conecta los músculos de la pantorrilla (gastrocnemio y sóleo) con el hueso del talón (calcáneo). Esta lesión impide la función normal del pie, dificultando caminar, correr o ponerse de puntillas.​</p>
+                            <img src="img/tendon-aquiles.jpg" alt="Tendón de Aquiles" class="imagen-pequena">
+                        </div>
+                    </div>
+                </div>
+                <div class="acordeon-item">
+                    <button class="acordeon-boton">Bursitis</button>
+                    <div class="acordeon-contenido">
+                        <div class="contenido-flex">
+                            <p>La bursitis es la inflamación de la bursa, estructura en forma de bolsa, que se sitúa entre huesos, tendones y músculos, con una función facilitadora del movimiento de dichas estructuras entre sí. Debido al proceso inflamatorio la bursa pasa a acumular una cantidad significativa de líquido. Esta dolencia puede ser aguda o crónica. Comúnmente, se presenta en la zona del hombro, la rodilla, el codo, la cadera o el tendón de Aquiles.</p>
+                            <img src="img/bursitis.jpg" alt="Bursitis" class="imagen-pequena">
+                        </div>
+                    </div>
+                </div>
+                <!-- Más items del acordeón aquí -->
+            </div>
+        </section>
+
+        <!-- Navegación entre secciones -->
+        <div class="navegacion-secciones">
+            <a href="anatomia-muscular.html" class="boton-nav">← Anterior</a>
+            <a href="index.html" class="boton-volver">Volver al inicio</a>
+            <a href="nutricion-y-musculos.html" class="boton-nav">Siguiente →</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 MuscleQuest - Aplicación educativa
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/menu.js"></script>
+    <script src="js/acordeon.js"></script>
+</body>
+</html> 

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anatomía muscular | MuscleQuest</title>
+    <meta name="description" content="Explora la anatomía y estructura de los músculos del cuerpo humano.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+</head>
+<body>
+    <!-- Header con botón hamburguesa -->
+    <header>
+        <h1>MuscleQuest</h1>
+        <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav id="main-nav">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="que-son-los-musculos.html">¿Qué son los músculos?</a></li>
+            <li><a href="tipos-de-musculos.html">Tipos de músculos</a></li>
+            <li><a href="funciones-de-los-musculos.html">Funciones de los músculos</a></li>
+            <li><a href="anatomia-muscular.html">Anatomía muscular</a></li>
+            <li><a href="enfermedades-y-lesiones.html">Enfermedades y lesiones</a></li>
+            <li><a href="nutricion-y-musculos.html">Nutrición y músculos</a></li>
+            <li><a href="ejercicios-y-entrenamiento-muscular.html">Ejercicios y entrenamiento muscular</a></li>
+            <li><a href="todos-los-musculos.html">Todos los músculos</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+        <h2>Anatomía muscular</h2>
+        
+        <!-- Introducción con imagen -->
+        <section class="contenido-flex">
+            <div class="texto-contenido">
+                <h3>Estructura general</h3>
+                <p>Un músculo está compuesto de varias capas organizadas jerárquicamente, 
+                desde las fibras musculares individuales hasta el músculo completo.</p>
+            </div>
+            <img src="img/anatomia-general.jpg" alt="Estructura general del músculo" class="imagen-derecha">
+        </section>
+
+        <!-- Capas musculares -->
+        <section class="capas-musculares">
+            <h3>Capas del músculo</h3>
+            <div class="grid-capas">
+                <div class="capa-item">
+                    <img src="img/fibras.jpg" alt="Fibras musculares">
+                    <h4>Fibras musculares</h4>
+                    <p>Células musculares individuales que son las unidades básicas.</p>
+                </div>
+                <div class="capa-item">
+                    <img src="img/fasiculos.jpg" alt="Fascículos">
+                    <h4>Fascículos</h4>
+                    <p>Grupos de fibras musculares rodeadas por tejido conectivo.</p>
+                </div>
+                <div class="capa-item">
+                    <img src="img/musculo-completo.jpg" alt="Músculo completo">
+                    <h4>Músculo completo</h4>
+                    <p>El conjunto completo rodeado por tejido conectivo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tejido conectivo -->
+        <section>
+            <h3>Tejido conectivo</h3>
+            <div class="tabla-contenedor">
+                <table class="tabla-anatomia">
+                    <thead>
+                        <tr>
+                            <th>Capa</th>
+                            <th>Descripción</th>
+                            <th>Función</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Endomisio</td>
+                            <td>Rodea cada fibra muscular</td>
+                            <td>Protección individual de fibras</td>
+                        </tr>
+                        <tr>
+                            <td>Perimisio</td>
+                            <td>Rodea cada fascículo</td>
+                            <td>Organización de grupos de fibras</td>
+                        </tr>
+                        <tr>
+                            <td>Epimisio</td>
+                            <td>Rodea todo el músculo</td>
+                            <td>Protección general del músculo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Proteínas principales -->
+        <section class="contenido-flex reverse">
+            <div class="texto-contenido">
+                <h3>Proteínas principales</h3>
+                <ul class="lista-proteinas">
+                    <li>
+                        <strong>Actina (filamento delgado)</strong>
+                        <p>Proteína que forma los filamentos delgados del sarcómero.</p>
+                    </li>
+                    <li>
+                        <strong>Miosina (filamento grueso)</strong>
+                        <p>Proteína motora responsable de la contracción muscular.</p>
+                    </li>
+                </ul>
+            </div>
+            <img src="img/proteinas.jpg" alt="Proteínas musculares" class="imagen-derecha">
+        </section>
+
+        <!-- Navegación entre secciones -->
+        <div class="navegacion-secciones">
+            <a href="funciones-de-los-musculos.html" class="boton-nav">← Anterior</a>
+            <a href="index.html" class="boton-volver">Volver al inicio</a>
+            <a href="enfermedades-y-lesiones.html" class="boton-nav">Siguiente →</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 MuscleQuest - Aplicación educativa
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/menu.js"></script>
+</body>
+</html> 

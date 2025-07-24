@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios y entrenamiento muscular | MuscleQuest</title>
+    <meta name="description" content="Descubre los mejores ejercicios y técnicas de entrenamiento muscular.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+</head>
+<body>
+    <!-- Header con botón hamburguesa -->
+    <header>
+        <h1>MuscleQuest</h1>
+        <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav id="main-nav">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="que-son-los-musculos.html">¿Qué son los músculos?</a></li>
+            <li><a href="tipos-de-musculos.html">Tipos de músculos</a></li>
+            <li><a href="funciones-de-los-musculos.html">Funciones de los músculos</a></li>
+            <li><a href="anatomia-muscular.html">Anatomía muscular</a></li>
+            <li><a href="enfermedades-y-lesiones.html">Enfermedades y lesiones</a></li>
+            <li><a href="nutricion-y-musculos.html">Nutrición y músculos</a></li>
+            <li><a href="ejercicios-y-entrenamiento-muscular.html">Ejercicios y entrenamiento muscular</a></li>
+            <li><a href="todos-los-musculos.html">Todos los músculos</a></li>
+            <li><a href="quizzes.html">Quizzes</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+        <h2>Ejercicios y entrenamiento muscular</h2>
+
+        <!-- Tabs de tipos de entrenamiento -->
+        <section class="seccion-tabs">
+            <div class="tabs">
+                <button class="tab-btn activo" data-tab="fuerza">Entrenamiento de fuerza</button>
+                <button class="tab-btn" data-tab="cardio">Entrenamiento cardiovascular</button>
+                <button class="tab-btn" data-tab="flexibilidad">Flexibilidad</button>
+            </div>
+
+            <div class="tab-contenido activo" id="fuerza">
+                <div class="contenido-flex">
+                    <div class="texto-contenido">
+                        <h3>Entrenamiento de fuerza</h3>
+                        <p>Usar pesas, bandas elásticas o tu propio peso corporal para fortalecer y aumentar 
+                        el tamaño muscular (hipertrofia).</p>
+                        <ul class="lista-ejercicios">
+                            <li>Sentadillas</li>
+                            <li>Flexiones de pecho</li>
+                            <li>Peso muerto</li>
+                            <li>Press de banca</li>
+                        </ul>
+                    </div>
+                    <img src="img/entrenamiento-fuerza.jpg" alt="Entrenamiento de fuerza" class="imagen-derecha">
+                </div>
+            </div>
+
+            <div class="tab-contenido" id="cardio">
+                <!-- Contenido similar para cardio -->
+            </div>
+
+            <div class="tab-contenido" id="flexibilidad">
+                <!-- Contenido similar para flexibilidad -->
+            </div>
+        </section>
+
+        <!-- Tipos de contracción muscular -->
+        <section>
+            <h3>Tipos de contracción muscular</h3>
+            <div class="grid-contracciones">
+                <div class="tarjeta-contraccion">
+                    <img src="img/isotonica.jpg" alt="Contracción isotónica">
+                    <h4>Isotónica</h4>
+                    <p>El músculo cambia de longitud (levantamiento de pesas).</p>
+                </div>
+                <div class="tarjeta-contraccion">
+                    <img src="img/isometrica.jpg" alt="Contracción isométrica">
+                    <h4>Isométrica</h4>
+                    <p>El músculo genera fuerza sin cambiar de longitud.</p>
+                </div>
+                <div class="tarjeta-contraccion">
+                    <img src="img/excentrica.jpg" alt="Contracción excéntrica">
+                    <h4>Excéntrica</h4>
+                    <p>El músculo se alarga bajo tensión.</p>
+                </div>
+                <div class="tarjeta-contraccion">
+                    <img src="img/concentrica.jpg" alt="Contracción concéntrica">
+                    <h4>Concéntrica</h4>
+                    <p>El músculo se acorta bajo tensión.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Progresión del entrenamiento -->
+        <section class="seccion-progresion">
+            <h3>Progresión del entrenamiento</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-contenido">
+                        <h4>Semana 1-2</h4>
+                        <p>Adaptación y técnica básica</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-contenido">
+                        <h4>Semana 3-4</h4>
+                        <p>Incremento gradual de peso</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-contenido">
+                        <h4>Semana 5-8</h4>
+                        <p>Aumento de intensidad</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegación entre secciones -->
+        <div class="navegacion-secciones">
+            <a href="enfermedades-y-lesiones.html" class="boton-nav">← Anterior</a>
+            <a href="index.html" class="boton-volver">Volver al inicio</a>
+            <a href="todos-los-musculos.html" class="boton-nav">Siguiente →</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        © 2025 MuscleQuest - Aplicación educativa
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/menu.js"></script>
+    <script src="js/tabs.js"></script>
+</body>
+</html> 

@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes - MuscleQuest</title>
+    <meta name="description" content="Pon a prueba tus conocimientos sobre anatomía muscular con nuestros quizzes interactivos.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <style>
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quiz-card {
+            background: var(--crema);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 16px rgba(34,34,59,0.07);
+            border-left: 4px solid var(--azul-gris);
+        }
+        
+        .quiz-title {
+            color: var(--azul-gris);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .quiz-question {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--azul-oscuro);
+            font-weight: 600;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .quiz-option {
+            padding: 1rem;
+            background: var(--rosa-gris);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .quiz-option:hover {
+            background: var(--lila-gris);
+            transform: translateX(10px);
+        }
+        
+        .quiz-option.selected {
+            background: var(--azul-gris);
+            color: var(--crema);
+            border-color: var(--azul-oscuro);
+        }
+        
+        .quiz-option.correct {
+            background: #4CAF50;
+            color: white;
+            border-color: #2E7D32;
+        }
+        
+        .quiz-option.incorrect {
+            background: #f44336;
+            color: white;
+            border-color: #c62828;
+        }
+        
+        .quiz-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            display: none;
+        }
+        
+        .quiz-result.correct {
+            background: #E8F5E8;
+            color: #2E7D32;
+            border: 1px solid #4CAF50;
+        }
+        
+        .quiz-result.incorrect {
+            background: #FFEBEE;
+            color: #c62828;
+            border: 1px solid #f44336;
+        }
+        
+        .quiz-explanation {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--lila-gris);
+            border-radius: 8px;
+            display: none;
+            font-style: italic;
+        }
+        
+        .quiz-submit {
+            background: var(--azul-gris);
+            color: var(--crema);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .quiz-submit:hover {
+            background: var(--lila-gris);
+            color: var(--azul-oscuro);
+            transform: translateY(-2px);
+        }
+        
+        .quiz-submit:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .quiz-reset {
+            background: var(--rosa-gris);
+            color: var(--azul-oscuro);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 1rem;
+            margin-left: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .quiz-reset:hover {
+            background: var(--lila-gris);
+            transform: translateY(-2px);
+        }
+        
+        .score-display {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: var(--azul-gris);
+            color: var(--crema);
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: var(--rosa-gris);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--azul-gris);
+            transition: width 0.3s;
+            width: 0%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con botón hamburguesa -->
+    <header>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; position: relative;">
+            
+            <h1 style="margin: 0;">MuscleQuest</h1>
+        </div>
+        <button id="menu-btn" aria-label="Abrir menú" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav id="main-nav">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="que-son-los-musculos.html">¿Qué son los músculos?</a></li>
+            <li><a href="tipos-de-musculos.html">Tipos de músculos</a></li>
+            <li><a href="funciones-de-los-musculos.html">Funciones de los músculos</a></li>
+            <li><a href="anatomia-muscular.html">Anatomía muscular</a></li>
+            <li><a href="enfermedades-y-lesiones.html">Enfermedades y lesiones</a></li>
+            <li><a href="nutricion-y-musculos.html">Nutrición y músculos</a></li>
+            <li><a href="ejercicios-y-entrenamiento-muscular.html">Ejercicios y entrenamiento muscular</a></li>
+            <li><a href="todos-los-musculos.html">Todos los músculos</a></li>
+            <li><a href="quizzes.html" class="active">Quizzes</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main>
+        <h2>Quizzes de Anatomía Muscular</h2>
+        
+        <div class="score-display" id="score-display" style="display: none;">
+            <div>Puntuación: <span id="score">0</span>/10</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <div class="quiz-container">
+            <!-- Quiz 1: Tipos de músculos -->
+            <div class="quiz-card" id="quiz1">
+                <h3 class="quiz-title">Quiz 1: Tipos de Músculos</h3>
+                <p class="quiz-question">¿Cuál de los siguientes tipos de músculos es voluntario y se encuentra principalmente en las extremidades?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="true">Músculo esquelético</div>
+                    <div class="quiz-option" data-correct="false">Músculo cardíaco</div>
+                    <div class="quiz-option" data-correct="false">Músculo liso</div>
+                    <div class="quiz-option" data-correct="false">Músculo visceral</div>
+                </div>
+                <div class="quiz-result" id="result1"></div>
+                <div class="quiz-explanation" id="explanation1">
+                    El músculo esquelético es el único tipo de músculo voluntario, lo que significa que podemos controlarlo conscientemente. Se encuentra principalmente en las extremidades y está unido a los huesos.
+                </div>
+                <button class="quiz-submit" onclick="checkAnswer(1)">Verificar respuesta</button>
+                <button class="quiz-reset" onclick="resetQuiz(1)">Reiniciar</button>
+            </div>
+
+            <!-- Quiz 2: Funciones musculares -->
+            <div class="quiz-card" id="quiz2">
+                <h3 class="quiz-title">Quiz 2: Funciones de los Músculos</h3>
+                <p class="quiz-question">¿Cuál es la función principal del músculo bíceps braquial?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">Extender el brazo</div>
+                    <div class="quiz-option" data-correct="true">Flexionar el brazo</div>
+                    <div class="quiz-option" data-correct="false">Rotar el hombro</div>
+                    <div class="quiz-option" data-correct="false">Estabilizar la articulación</div>
+                </div>
+                <div class="quiz-result" id="result2"></div>
+                <div class="quiz-explanation" id="explanation2">
+                    El bíceps braquial es el principal músculo flexor del brazo. Su función principal es flexionar el codo, acercando el antebrazo hacia el brazo.
+                </div>
+                <button class="quiz-submit" onclick="checkAnswer(2)">Verificar respuesta</button>
+                <button class="quiz-reset" onclick="resetQuiz(2)">Reiniciar</button>
+            </div>
+
+            <!-- Quiz 3: Nutrición muscular -->
+            <div class="quiz-card" id="quiz3">
+                <h3 class="quiz-title">Quiz 3: Nutrición Muscular</h3>
+                <p class="quiz-question">¿Qué nutriente es esencial para la síntesis de proteínas musculares y la recuperación después del ejercicio?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">Carbohidratos</div>
+                    <div class="quiz-option" data-correct="false">Grasas</div>
+                    <div class="quiz-option" data-correct="true">Proteínas</div>
+                    <div class="quiz-option" data-correct="false">Vitaminas</div>
+                </div>
+                <div class="quiz-result" id="result3"></div>
+                <div class="quiz-explanation" id="explanation3">
+                    Las proteínas son fundamentales para la síntesis de proteínas musculares. Los aminoácidos que contienen son los bloques de construcción necesarios para reparar y construir tejido muscular.
+                </div>
+                <button class="quiz-submit" onclick="checkAnswer(3)">Verificar respuesta</button>
+                <button class="quiz-reset" onclick="resetQuiz(3)">Reiniciar</button>
+            </div>
+
+            <!-- Quiz 4: Anatomía muscular -->
+            <div class="quiz-card" id="quiz4">
+                <h3 class="quiz-title">Quiz 4: Anatomía Muscular</h3>
+                <p class="quiz-question">¿Cuál es el músculo más grande del cuerpo humano?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">Bíceps braquial</div>
+                    <div class="quiz-option" data-correct="false">Cuádriceps</div>
+                    <div class="quiz-option" data-correct="true">Glúteo mayor</div>
+                    <div class="quiz-option" data-correct="false">Dorsal ancho</div>
+                </div>
+                <div class="quiz-result" id="result4"></div>
+                <div class="quiz-explanation" id="explanation4">
+                    El glúteo mayor es el músculo más grande del cuerpo humano. Es responsable de la extensión de la cadera y es fundamental para actividades como caminar, correr y subir escaleras.
+                </div>
+                <button class="quiz-submit" onclick="checkAnswer(4)">Verificar respuesta</button>
+                <button class="quiz-reset" onclick="resetQuiz(4)">Reiniciar</button>
+            </div>
+
+            <!-- Quiz 5: Contracciones musculares -->
+            <div class="quiz-card" id="quiz5">
+                <h3 class="quiz-title">Quiz 5: Contracciones Musculares</h3>
+                <p class="quiz-question">¿Qué tipo de contracción muscular ocurre cuando el músculo se acorta mientras genera tensión?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="true">Contracción concéntrica</div>
+                    <div class="quiz-option" data-correct="false">Contracción excéntrica</div>
+                    <div class="quiz-option" data-correct="false">Contracción isométrica</div>
+                    <div class="quiz-option" data-correct="false">Contracción isotónica</div>
+                </div>
+                <div class="quiz-result" id="result5"></div>
+                <div class="quiz-explanation" id="explanation5">
+                    En una contracción concéntrica, el músculo se acorta mientras genera tensión. Un ejemplo es cuando levantas una pesa flexionando el brazo (el bíceps se acorta).
+                </div>
+                <button class="quiz-submit" onclick="checkAnswer(5)">Verificar respuesta</button>
+                <button class="quiz-reset" onclick="resetQuiz(5)">Reiniciar</button>
+            </div>
+
+            <!-- Quiz 6: Lesiones musculares -->
+            <div class="quiz-card" id="quiz6">
+                <h3 class="quiz-title">Quiz 6: Lesiones Musculares</h3>
+                <p class="quiz-question">¿Cuál es el tratamiento inicial más apropiado para una distensión muscular aguda?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">Aplicar calor inmediatamente</div>
+                    <div class="quiz-option" data-correct="true">Aplicar hielo y reposo</div>
+                    <div class="quiz-option" data-correct="false">Masaje intenso</div>
+                    <div class="quiz-option" data-correct="false">Ejercicio vigoroso</div>
+                </div>
+                <div class="quiz-result" id="result6"></div>
+                <div class="quiz-explanation" id="explanation6">
+                    El protocolo RICE (Reposo, Hielo, Compresión, Elevación) es el tratamiento inicial estándar para lesiones musculares agudas. El hielo reduce la inflamación y el dolor.
+                </div>
+                <button class="quiz-submit" onclick="checkAnswer(6)">Verificar respuesta</button>
+                <button class="quiz-reset" onclick="resetQuiz(6)">Reiniciar</button>
+            </div>
+
+            <!-- Quiz 7: Ejercicios musculares -->
+            <div class="quiz-card" id="quiz7">
+                <h3 class="quiz-title">Quiz 7: Ejercicios Musculares</h3>
+                <p class="quiz-question">¿Qué tipo de ejercicio es más efectivo para aumentar la fuerza muscular?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">Ejercicios de resistencia ligera con muchas repeticiones</div>
+                    <div class="quiz-option" data-correct="true">Ejercicios de resistencia pesada con pocas repeticiones</div>
+                    <div class="quiz-option" data-correct="false">Ejercicios aeróbicos prolongados</div>
+                    <div class="quiz-option" data-correct="false">Estiramientos pasivos</div>
+                </div>
+                <div class="quiz-result" id="result7"></div>
+                <div class="quiz-explanation" id="explanation7">
+                    Para aumentar la fuerza muscular, se recomiendan ejercicios con cargas pesadas (70-85% del máximo) y pocas repeticiones (1-6). Esto estimula la hipertrofia y el reclutamiento de fibras musculares.
+                </div>
+                <button class="quiz-submit" onclick="checkAnswer(7)">Verificar respuesta</button>
+                <button class="quiz-reset" onclick="resetQuiz(7)">Reiniciar</button>
+            </div>
+
+            <!-- Quiz 8: Fisiología muscular -->
+            <div class="quiz-card" id="quiz8">
+                <h3 class="quiz-title">Quiz 8: Fisiología Muscular</h3>
+                <p class="quiz-question">¿Qué sustancia es la fuente de energía inmediata para la contracción muscular?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="true">ATP (Adenosín trifosfato)</div>
+                    <div class="quiz-option" data-correct="false">Glucosa</div>
+                    <div class="quiz-option" data-correct="false">Creatina</div>
+                    <div class="quiz-option" data-correct="false">Glucógeno</div>
+                </div>
+                <div class="quiz-result" id="result8"></div>
+                <div class="quiz-explanation" id="explanation8">
+                    El ATP es la molécula de energía universal que proporciona la energía inmediata necesaria para la contracción muscular. Cuando el ATP se descompone en ADP, libera energía que permite que las fibras musculares se contraigan.
+                </div>
+                <button class="quiz-submit" onclick="checkAnswer(8)">Verificar respuesta</button>
+                <button class="quiz-reset" onclick="resetQuiz(8)">Reiniciar</button>
+            </div>
+
+            <!-- Quiz 9: Músculos específicos -->
+            <div class="quiz-card" id="quiz9">
+                <h3 class="quiz-title">Quiz 9: Músculos Específicos</h3>
+                <p class="quiz-question">¿Qué músculo es responsable de la respiración y se encuentra debajo de los pulmones?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">Intercostales</div>
+                    <div class="quiz-option" data-correct="true">Diafragma</div>
+                    <div class="quiz-option" data-correct="false">Escalenos</div>
+                    <div class="quiz-option" data-correct="false">Esternocleidomastoideo</div>
+                </div>
+                <div class="quiz-result" id="result9"></div>
+                <div class="quiz-explanation" id="explanation9">
+                    El diafragma es el músculo principal de la respiración. Cuando se contrae, se aplana y aumenta el volumen de la cavidad torácica, permitiendo que los pulmones se expandan y se llene de aire.
+                </div>
+                <button class="quiz-submit" onclick="checkAnswer(9)">Verificar respuesta</button>
+                <button class="quiz-reset" onclick="resetQuiz(9)">Reiniciar</button>
+            </div>
+
+            <!-- Quiz 10: Salud muscular -->
+            <div class="quiz-card" id="quiz10">
+                <h3 class="quiz-title">Quiz 10: Salud Muscular</h3>
+                <p class="quiz-question">¿Cuál es la cantidad mínima recomendada de proteína diaria para un adulto que hace ejercicio regular?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-correct="false">0.5 gramos por kg de peso corporal</div>
+                    <div class="quiz-option" data-correct="false">1.0 gramos por kg de peso corporal</div>
+                    <div class="quiz-option" data-correct="true">1.2-1.6 gramos por kg de peso corporal</div>
+                    <div class="quiz-option" data-correct="false">2.5 gramos por kg de peso corporal</div>
+                </div>
+                <div class="quiz-result" id="result10"></div>
+                <div class="quiz-explanation" id="explanation10">
+                    Para personas que hacen ejercicio regular, se recomienda consumir entre 1.2-1.6 gramos de proteína por kg de peso corporal al día. Esto ayuda a la recuperación muscular y al desarrollo de masa muscular.
+                </div>
+                <button class="quiz-submit" onclick="checkAnswer(10)">Verificar respuesta</button>
+                <button class="quiz-reset" onclick="resetQuiz(10)">Reiniciar</button>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin: 2rem 0;">
+            <button class="boton-nav" onclick="showFinalScore()">Ver Puntuación Final</button>
+            <button class="boton-nav" onclick="resetAllQuizzes()" style="margin-left: 1rem;">Reiniciar Todos los Quizzes</button>
+        </div>
+        <!-- Navegación entre secciones -->
+        <div class="navegacion-secciones">
+            <a href="index.html" class="boton-volver">Volver al inicio</a>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        © 2025 MuscleQuest - Aplicación educativa
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/menu.js"></script>
+    <script>
+        let quizScores = {
+            1: false, 2: false, 3: false, 4: false, 5: false,
+            6: false, 7: false, 8: false, 9: false, 10: false
+        };
+
+        function selectOption(quizId, optionElement) {
+            const quizCard = document.getElementById(`quiz${quizId}`);
+            const options = quizCard.querySelectorAll('.quiz-option');
+            
+            // Remover selección previa
+            options.forEach(option => option.classList.remove('selected'));
+            
+            // Seleccionar nueva opción
+            optionElement.classList.add('selected');
+        }
+
+        function checkAnswer(quizId) {
+            const quizCard = document.getElementById(`quiz${quizId}`);
+            const selectedOption = quizCard.querySelector('.quiz-option.selected');
+            const resultDiv = document.getElementById(`result${quizId}`);
+            const explanationDiv = document.getElementById(`explanation${quizId}`);
+            const submitBtn = quizCard.querySelector('.quiz-submit');
+            
+            if (!selectedOption) {
+                alert('Por favor selecciona una respuesta antes de verificar.');
+                return;
+            }
+
+            const isCorrect = selectedOption.getAttribute('data-correct') === 'true';
+            const options = quizCard.querySelectorAll('.quiz-option');
+            
+            // Mostrar resultados
+            options.forEach(option => {
+                if (option.getAttribute('data-correct') === 'true') {
+                    option.classList.add('correct');
+                } else if (option.classList.contains('selected')) {
+                    option.classList.add('incorrect');
+                }
+            });
+
+            // Mostrar mensaje de resultado
+            resultDiv.style.display = 'block';
+            if (isCorrect) {
+                resultDiv.textContent = '¡Correcto!';
+                resultDiv.className = 'quiz-result correct';
+                quizScores[quizId] = true;
+            } else {
+                resultDiv.textContent = 'Incorrecto.';
+                resultDiv.className = 'quiz-result incorrect';
+                quizScores[quizId] = false;
+            }
+
+            // Mostrar explicación
+            explanationDiv.style.display = 'block';
+            
+            // Deshabilitar botón
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Respondido';
+        }
+
+        function resetQuiz(quizId) {
+            const quizCard = document.getElementById(`quiz${quizId}`);
+            const options = quizCard.querySelectorAll('.quiz-option');
+            const resultDiv = document.getElementById(`result${quizId}`);
+            const explanationDiv = document.getElementById(`explanation${quizId}`);
+            const submitBtn = quizCard.querySelector('.quiz-submit');
+            
+            // Limpiar selecciones
+            options.forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+            
+            // Ocultar resultados
+            resultDiv.style.display = 'none';
+            explanationDiv.style.display = 'none';
+            
+            // Habilitar botón
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Verificar respuesta';
+            
+            // Resetear puntuación
+            quizScores[quizId] = false;
+        }
+
+        function showFinalScore() {
+            const correctAnswers = Object.values(quizScores).filter(score => score).length;
+            const scoreDisplay = document.getElementById('score-display');
+            const scoreElement = document.getElementById('score');
+            const progressFill = document.getElementById('progress-fill');
+            
+            scoreElement.textContent = correctAnswers;
+            progressFill.style.width = `${(correctAnswers / 10) * 100}%`;
+            scoreDisplay.style.display = 'block';
+            
+            // Scroll to score
+            scoreDisplay.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetAllQuizzes() {
+            for (let i = 1; i <= 10; i++) {
+                resetQuiz(i);
+            }
+            document.getElementById('score-display').style.display = 'none';
+        }
+
+        // Agregar event listeners para selección de opciones
+        document.addEventListener('DOMContentLoaded', function() {
+            const options = document.querySelectorAll('.quiz-option');
+            options.forEach(option => {
+                option.addEventListener('click', function() {
+                    const quizId = this.closest('.quiz-card').id.replace('quiz', '');
+                    selectOption(quizId, this);
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
