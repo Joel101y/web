@@ -932,3 +932,98 @@ blockquote {
         transform: translate(-50%, -50%) scale(1);
     }
 }
+
+/* Estilos del formulario de contacto */
+.formulario-contacto {
+    background: var(--blanco);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(34,34,59,0.1);
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.form-grupo {
+    margin-bottom: 1.5rem;
+}
+
+.form-grupo label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--azul-oscuro);
+    font-size: 0.95rem;
+}
+
+.form-grupo input,
+.form-grupo textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--rosa-gris);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    background: var(--blanco);
+}
+
+.form-grupo input:focus,
+.form-grupo textarea:focus {
+    outline: none;
+    border-color: var(--azul-gris);
+    box-shadow: 0 0 0 3px rgba(74,78,105,0.1);
+}
+
+.form-grupo input::placeholder,
+.form-grupo textarea::placeholder {
+    color: var(--lila-gris);
+    opacity: 0.7;
+}
+
+.form-grupo textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.boton-enviar {
+    background: var(--azul-oscuro);
+    color: var(--crema);
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.boton-enviar:hover {
+    background: var(--azul-gris);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(34,34,59,0.2);
+}
+
+.boton-enviar:active {
+    transform: translateY(0);
+}
+
+.boton-enviar:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(34,34,59,0.3);
+}
+
+/* Responsive para el formulario */
+@media (max-width: 768px) {
+    .formulario-contacto {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .form-grupo input,
+    .form-grupo textarea {
+        padding: 0.6rem;
+        font-size: 0.95rem;
+    }
+}
