@@ -1027,3 +1027,160 @@ blockquote {
         font-size: 0.95rem;
     }
 }
+
+/* Estilos para la página Acerca de nosotros */
+.equipo-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin: 2rem 0;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.miembro-equipo {
+    background: var(--blanco);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 25px rgba(34,34,59,0.12);
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.miembro-equipo::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--azul-oscuro), var(--azul-gris), var(--lila-gris));
+}
+
+.miembro-equipo:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(34,34,59,0.18);
+}
+
+.avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, var(--azul-gris), var(--lila-gris));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 2rem 0;
+    font-size: 3.5rem;
+    box-shadow: 0 4px 15px rgba(34,34,59,0.2);
+    border: 4px solid var(--crema);
+}
+
+.miembro-equipo h4 {
+    color: var(--azul-oscuro);
+    margin: 0 0 0.8rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.rol {
+    color: var(--azul-gris);
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    background: var(--crema);
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.miembro-equipo p {
+    color: var(--azul-oscuro);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+}
+
+.habilidades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    justify-content: flex-start;
+    margin-top: 1rem;
+}
+
+.habilidad {
+    background: linear-gradient(135deg, var(--rosa-gris), var(--lila-gris));
+    color: var(--azul-oscuro);
+    padding: 0.6rem 1.2rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(34,34,59,0.1);
+    transition: transform 0.2s;
+}
+
+.habilidad:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(34,34,59,0.15);
+}
+
+.valores-lista {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+}
+
+.valores-lista li {
+    margin: 0.8rem 0;
+    padding: 0.8rem;
+    background: var(--crema);
+    border-radius: 8px;
+    border-left: 4px solid var(--azul-gris);
+}
+
+.valores-lista strong {
+    color: var(--azul-oscuro);
+}
+
+/* Responsive para la página Acerca de nosotros */
+@media (max-width: 768px) {
+    .equipo-grid {
+        gap: 2rem;
+        margin: 1rem;
+    }
+    
+    .miembro-equipo {
+        padding: 2rem;
+        border-radius: 12px;
+    }
+    
+    .avatar-placeholder {
+        width: 100px;
+        height: 100px;
+        font-size: 3rem;
+        margin: 0 0 1.5rem 0;
+    }
+    
+    .miembro-equipo h4 {
+        font-size: 1.5rem;
+    }
+    
+    .rol {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+    
+    .miembro-equipo p {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+    
+    .habilidad {
+        padding: 0.5rem 1rem;
+        font-size: 0.85rem;
+    }
+}
